@@ -1,4 +1,4 @@
-# 201834812mishengrun
+# 201834872mishengrun
 Data Mining Homework
 # 任务：
 1.预处理文本数据集，并且得到每个文本的VSM表示。
