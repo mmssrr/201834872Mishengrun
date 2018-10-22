@@ -3,6 +3,8 @@
 import os,sys
 from textblob import TextBlob
 from textblob import Word
+import nltk
+from nltk.corpus import stopwords
 
 base_path = 'data/20news-18828/'
 class Preprocessing():
@@ -23,7 +25,7 @@ class Preprocessing():
         words=self.check_words(words)
 
         new_path=file_path.replace('20news-18828','words')
-        print(file_path)
+
         new_path=new_path[:-new_path[::-1].find('/')]
         if not os.path.exists(new_path):
             os.makedirs(new_path)
@@ -31,9 +33,13 @@ class Preprocessing():
         with open(new_path,'w',encoding='utf-8',errors='ignore') as f:
             for word in words:
                 f.write(word+' ')
+                print(new_path)
+                print('Preprocessing Finish!')
 
     def check_words(self,words):
         new_words=[]
+        clean_words=[]
+        sr=stopwords.words('english')
         for word in words:
             word=word.lower()
             flag=False
@@ -46,7 +52,9 @@ class Preprocessing():
             word=Word(word).lemmatize()
             word = Word(word).lemmatize('v')
             new_words.append(word)
-        return new_words
+        clean_words = [i for i in new_words if i not in sr]
+
+        return clean_words
 
 
 if __name__=='__main__':
