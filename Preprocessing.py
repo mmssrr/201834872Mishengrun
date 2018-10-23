@@ -44,11 +44,11 @@ class Preprocessing():
             word=word.lower()
             flag=False
             for letter in word:
-                if not ((letter>'a' and letter<'z') or letter=='-'):
+                if not ((letter>='a' and letter<='z') or letter=='-'):
                     flag =True
                     break
             if flag:
-                continue
+
             word=Word(word).lemmatize()
             word = Word(word).lemmatize('v')
             new_words.append(word)
