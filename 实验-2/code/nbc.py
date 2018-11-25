@@ -94,9 +94,8 @@ if __name__ == '__main__':
             file_path = path + class_ + '/' + file_name
             test_paths.append(file_path)
 
-    print(test_paths)
-    # test_paths = random.sample(test_paths, 500)
-    # print(test_paths)
+    #print(test_paths)
+
 
     nbc = NBC()
     correct = 0
